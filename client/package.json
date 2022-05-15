@@ -25,7 +25,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "gen-sitemap": "babel-node ./src/utils/sitemap.js"
   },
   "eslintConfig": {
     "extends": [
@@ -48,8 +49,10 @@
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/eslint-parser": "^7.17.0",
+    "@babel/node": "^7.17.10",
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.15.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -59,6 +62,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "react-router-sitemap-generator": "^0.0.8"
   }
 }
