@@ -26,7 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "gen-sitemap": "babel-node ./src/utils/sitemap.js"
+    "gen-sitemap": "cross-env NODE_PATH=./src ts-node --files --project ./tsconfig.node.json ./utils/sitemap.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -47,14 +47,16 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/eslint-parser": "^7.17.0",
-    "@babel/node": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
-    "@babel/preset-react": "^7.16.7",
-    "babel-plugin-module-resolver": "^4.1.0",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.34",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.15.0",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-import": "^2.26.0",
@@ -63,6 +65,7 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
     "prettier": "^2.6.2",
-    "react-router-sitemap-generator": "^0.0.8"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
   }
 }

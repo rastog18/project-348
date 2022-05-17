@@ -1,12 +1,21 @@
 import { Box, Container, Stack, TextField, Typography } from '@mui/material'
 import { deleteUser, getUser, getUsers, updateUser, createUser } from 'api/user'
 import Button from 'components/Button'
+import type { ChangeEvent, FormEvent } from 'react'
 import { useEffect, useState } from 'react'
 import to from 'await-to-js'
 
+interface FormData {
+  target: {
+    firstName: { value: string }
+    lastName: { value: string }
+    id?: { value: string }
+  }
+}
+
 export default function Axios() {
-  const [users, setUsers] = useState([])
-  const [user, setUser] = useState()
+  const [users, setUsers] = useState<IUser[]>([])
+  const [user, setUser] = useState<IUser | null>()
   const [userId, setUserId] = useState('')
   const [deleteUserId, setDeleteUserId] = useState('')
 
@@ -24,7 +33,9 @@ export default function Axios() {
     if (data.users) setUsers(data.users)
   }
 
-  const onUserIdChange = (e) => {
+  const onUserIdChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setUserId(e.target.value.trim())
   }
 
@@ -44,7 +55,7 @@ export default function Axios() {
     setDeleteUserId('')
   }
 
-  const onCreateUser = async (e) => {
+  const onCreateUser = async (e: FormEvent<HTMLFormElement> & FormData) => {
     e.preventDefault()
     // A much better way is to store each field value in a state
     const firstName = e.target.firstName.value.trim()
@@ -57,18 +68,19 @@ export default function Axios() {
     getAllUsers()
   }
 
-  const onUpdateUser = async (e) => {
+  const onUpdateUser = async (e: FormEvent<HTMLFormElement> & FormData) => {
     e.preventDefault()
     // A much better way is to store each field value in a state
     const firstName = e.target.firstName.value.trim()
     const lastName = e.target.lastName.value.trim()
-    const id = e.target.id.value.trim()
+    // Here we use ! to assert that e.target.id is never null
+    const id = e.target.id!.value.trim()
 
     await to(updateUser({ id, firstName, lastName }))
 
     e.target.firstName.value = ''
     e.target.lastName.value = ''
-    e.target.id.value = ''
+    e.target.id!.value = ''
     getAllUsers()
   }
 

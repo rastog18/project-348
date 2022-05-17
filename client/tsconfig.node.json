@@ -1,0 +1,8 @@
+// Special typescript project file, used to generate sitemap.
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs"
+  },
+  "include": ["utils/sitemap.ts", "src/**/*.ts", "src/**/*.tsx"]
+}

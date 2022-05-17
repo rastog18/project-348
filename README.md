@@ -95,5 +95,4 @@ npm start
 
 ### Others
 
-- [Babel](https://babeljs.io/) (Transpiler)
 - [Eslint](https://eslint.org/) (Linter)

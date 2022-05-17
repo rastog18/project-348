@@ -9,9 +9,9 @@ export default function Root() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Main />} />
-        <Route exact path="/axios" element={<Axios />} />
-        <Route exact path="/redux" element={<Redux />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/axios" element={<Axios />} />
+        <Route path="/redux" element={<Redux />} />
         <Route path="*" element={<Container sx={{ p: 5 }}>404</Container>} />
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,6 @@
+import type { ButtonProps } from '@mui/material'
 import { styled, ButtonBase } from '@mui/material'
+import type { FC } from 'react'
 
 const CustomButton = styled(ButtonBase)({
   padding: '12px 16px',
@@ -15,6 +17,8 @@ const CustomButton = styled(ButtonBase)({
   },
 })
 
-export default function Button({ children, ...props }) {
-  return <CustomButton {...props}>{children}</CustomButton>
-}
+const Button: FC<ButtonProps> = ({ children, ...props }) => (
+  <CustomButton {...props}>{children}</CustomButton>
+)
+
+export default Button

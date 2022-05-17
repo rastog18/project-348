@@ -17,7 +17,7 @@ const connectMongo = () =>
     const db = mongoose.connection
     db.once('open', () => {
       console.log('connected to mongodb')
-      res()
+      res('success')
     })
   })
 

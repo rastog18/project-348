@@ -12,7 +12,7 @@ const port = process.env.PORT || 8080
 // Middlewares
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL],
+    origin: [process.env.CLIENT_URL || 'http://localhost:3000'],
     optionsSuccessStatus: 200,
     credentials: true,
   })
