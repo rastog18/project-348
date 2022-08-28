@@ -1,6 +1,6 @@
 # MERN Boilerplate
 
-## Introduction
+## Introduction 👋
 
 This is a full-stack boilerplate using MongoDB, Express.js, React.js, Node.js, and Typescript. For the Javascript boilerplate, switch to the `js` branch.
 
@@ -8,9 +8,9 @@ The `main` branch contains the starter code for a basic React project (initializ
 
 The `completed` branch contains the code to a fully-functioning, dockerized, web app with user authentication.
 
-<!-- Description about the app -->
+### Read the guide [here](https://animated-wedge-8d2.notion.site/Guides-fdca4a2d53e844c7ac1d52a2adf6e933)! 📖
 
-## Requirements
+## Requirements 📝
 
 - Node.js (Recommended to install through [NVM](https://github.com/nvm-sh/nvm))
 - MongoDB ([Community edition](https://www.mongodb.com/docs/manual/installation/))
@@ -20,7 +20,7 @@ The `completed` branch contains the code to a fully-functioning, dockerized, web
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-## Setup
+## Setup 🔨
 
 Install all dependencies for `client/` and `server/`.
 
@@ -76,7 +76,7 @@ cd server
 npm start
 ```
 
-## Technologies
+## Technologies ⚙
 
 ### Frontend
 
@@ -96,3 +96,4 @@ npm start
 ### Others
 
 - [Eslint](https://eslint.org/) (Linter)
+- [Prettier](https://prettier.io/) (Formatter)
