@@ -3,3 +3,8 @@ interface IUser {
   firstName: string
   lastName?: string
 }
+
+interface IUserAuth {
+  email: string
+  password: string
+}

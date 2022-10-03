@@ -1,23 +1,7 @@
 import User from 'models/user.model'
 import to from 'await-to-js'
-import type { TypedRequest, TypedResponse } from 'types/express'
 import type { IUser } from 'types/types'
-
-type Empty = {}
-
-type UsersResponse = {
-  users: IUser[]
-}
-
-type UserResponse = {
-  user: IUser | null
-}
-
-type ErrorResponse = {
-  error: Error
-}
-
-type Response<T> = TypedResponse<T | ErrorResponse>
+import type { Request, Response } from 'express'
 
 /**
  * .lean() returns an object rather than the mongoose document
@@ -26,10 +10,7 @@ type Response<T> = TypedResponse<T | ErrorResponse>
  * use .exec() to make query return a promise to use with to()
  */
 
-export const getUsers = async (
-  req: TypedRequest<Empty, Empty, Empty>,
-  res: Response<UsersResponse>
-) => {
+export const getUsers = async (req: Request, res: Response) => {
   const [error, users] = await to(User.find({}).lean().exec())
   if (error) return res.status(500).send({ error })
 
@@ -37,8 +18,8 @@ export const getUsers = async (
 }
 
 export const getUser = async (
-  req: TypedRequest<Empty, { id: string }, Empty>,
-  res: Response<UserResponse>
+  req: Request<{ id: string }, Empty, Empty>,
+  res: Response
 ) => {
   const { id } = req.params
   const [error, user] = await to(User.findById(id).lean().exec())
@@ -48,8 +29,8 @@ export const getUser = async (
 }
 
 export const createUser = async (
-  req: TypedRequest<Empty, Empty, Pick<IUser, 'firstName' | 'lastName'>>,
-  res: Response<UserResponse>
+  req: Request<Empty, Empty, Pick<IUser, 'firstName' | 'lastName'>>,
+  res: Response
 ) => {
   const { firstName, lastName } = req.body
   if (!firstName)
@@ -61,12 +42,8 @@ export const createUser = async (
 }
 
 export const updateUser = async (
-  req: TypedRequest<
-    Empty,
-    { id: string },
-    Pick<IUser, 'firstName' | 'lastName'>
-  >,
-  res: Response<UserResponse>
+  req: Request<{ id: string }, Empty, Pick<IUser, 'firstName' | 'lastName'>>,
+  res: Response
 ) => {
   const { id } = req.params
   const { firstName, lastName } = req.body
@@ -84,8 +61,8 @@ export const updateUser = async (
 }
 
 export const deleteUser = async (
-  req: TypedRequest<Empty, { id: string }, Empty>,
-  res: Response<UserResponse>
+  req: Request<{ id: string }>,
+  res: Response
 ) => {
   const { id } = req.params
   const [error, user] = await to(User.findByIdAndDelete(id).lean().exec())

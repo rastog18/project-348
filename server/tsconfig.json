@@ -1,10 +1,16 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    },
+    "files": true
+  },
   "compilerOptions": {
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
     /* Modules */
-    "module": "commonjs" /* Specify what module code is generated. */,
-    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "module": "ESNext" /* Specify what module code is generated. */,
+    "moduleResolution": "NodeNext" /* Specify how TypeScript looks up a file from a given module specifier. */,
     "baseUrl": "src" /* Specify the base directory to resolve non-relative module names. */,
     "typeRoots": [
       "./node_modules/@types",
@@ -75,7 +81,7 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": false /* Skip type checking all .d.ts files. */
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "src/types/*.d.ts"]
 }

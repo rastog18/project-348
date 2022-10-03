@@ -13,6 +13,7 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/consistent-type-imports': 'error', // Ensure `import type` is used when it's necessary
+    '@typescript-eslint/no-unused-vars': 1,
     'react/function-component-definition': [
       2,
       { namedComponents: ['arrow-function', 'function-declaration'] },
@@ -20,6 +21,14 @@ module.exports = {
     'react/jsx-filename-extension': [2, { extensions: ['.ts', '.tsx'] }],
     'no-use-before-define': 0,
     '@typescript-eslint/no-use-before-define': 0,
+    'no-shadow': 0,
+    '@typescript-eslint/no-shadow': [
+      2,
+      {
+        hoist: 'all',
+        allow: ['resolve', 'reject', 'done', 'next', 'err', 'error'],
+      },
+    ],
     'no-debugger': 0,
     'no-alert': 0,
     'no-await-in-loop': 0,
@@ -30,7 +39,7 @@ module.exports = {
       'LabeledStatement',
       'WithStatement',
     ],
-    'no-unused-vars': 0,
+    'no-unused-vars': 1,
     'prefer-const': [
       'error',
       {
@@ -71,13 +80,6 @@ module.exports = {
     'react/require-default-props': 0,
     'react/prop-types': 0,
     radix: 0,
-    'no-shadow': [
-      2,
-      {
-        hoist: 'all',
-        allow: ['resolve', 'reject', 'done', 'next', 'err', 'error'],
-      },
-    ],
     quotes: [
       2,
       'single',
