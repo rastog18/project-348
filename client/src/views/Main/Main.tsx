@@ -17,6 +17,9 @@ export default function Main() {
           <li>
             <Link to="/redux">Redux</Link>
           </li>
+          <li>
+            <Link to="/auth">Auth</Link>
+          </li>
         </ul>
       </Box>
     </Container>
