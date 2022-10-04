@@ -1,7 +1,9 @@
-import User from 'models/user.model'
 import to from 'await-to-js'
-import type { IUser } from 'types/types'
+
+import User from 'models/user.model'
+
 import type { Request, Response } from 'express'
+import type { IUser } from 'types/types'
 
 /**
  * .lean() returns an object rather than the mongoose document

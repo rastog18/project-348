@@ -1,6 +1,9 @@
 import to from 'await-to-js'
-import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
+
+import type { ActionCreatorWithPayload, Store } from '@reduxjs/toolkit'
+import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { RootState } from 'store'
 
 // https://www.npmjs.com/package/axios-cache-adapter
 // best to cache GET requests for better performance
@@ -8,6 +11,18 @@ import axios from 'axios'
 export type Token = string
 
 export type AuthResponse = { user: IUserAuth; token: Token }
+
+let store: Store<RootState> | undefined
+let setToken: ActionCreatorWithPayload<{ token: string }> | undefined
+
+export const injectStore = (_store: Store) => {
+  store = _store
+}
+export const injectSetToken = (
+  _setToken: ActionCreatorWithPayload<{ token: string }>
+) => {
+  setToken = _setToken
+}
 
 const AuthInstance = axios.create({
   baseURL: `${process.env.REACT_APP_SERVER_URL}/api/auth`,
@@ -17,7 +32,10 @@ const AuthInstance = axios.create({
 
 AuthInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('mern-boilerplate-session-token')
+    if (!store) return config
+
+    const { authState } = store.getState()
+    const { token } = authState
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`
     }
@@ -53,7 +71,7 @@ AuthInstance.interceptors.response.use(
         }
         if (!res) return
         const { token } = res.data
-        localStorage.setItem('mern-boilerplate-session-token', token)
+        if (store && setToken) store.dispatch(setToken({ token }))
         AuthInstance.defaults.headers.common.Authorization = `Bearer ${token}`
 
         return AuthInstance(originalConfig)

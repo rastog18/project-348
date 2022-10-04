@@ -5,7 +5,7 @@ const connectMongo = () =>
     const mongoURI = process.env.MONGO_URI
 
     if (!mongoURI) {
-      console.log('missing DATABASE_URL env')
+      console.log('missing MONGO_URI env')
       return
     }
 

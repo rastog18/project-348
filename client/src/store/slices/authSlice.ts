@@ -1,5 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
+
 import { getUser, login, logout, register } from 'store/thunks/authThunk'
+
 import type { RootState } from 'store'
 
 interface IUser {
@@ -22,6 +24,7 @@ export interface IAuthState {
   } | null
   success: boolean
   state: UserState
+  token: string | null
 }
 
 // declare initial state
@@ -31,15 +34,22 @@ const initialState: IAuthState = {
   error: null,
   success: false,
   state: UserState.NONE,
+  token: null,
 }
 
-// Create the reducers
+export const setToken = createAction<{ token: string }>('user/setToken')
 
+// Create the reducers
 export const authStateSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // set token
+    builder.addCase(setToken, (state, action) => {
+      state.token = action.payload.token
+    })
+
     // registration
     builder.addCase(register.pending, (state) => {
       state.state = UserState.REGISTERING
@@ -50,12 +60,14 @@ export const authStateSlice = createSlice({
       state.loading = false
       state.success = true
       state.user = action.payload.user
+      state.token = action.payload.token
       state.state = UserState.NONE
     })
     builder.addCase(register.rejected, (state, action) => {
       state.loading = false
       state.error = action.payload!
       state.state = UserState.NONE
+      state.token = null
     })
 
     // login
@@ -68,11 +80,13 @@ export const authStateSlice = createSlice({
       state.loading = false
       state.success = true
       state.user = action.payload.user
+      state.token = action.payload.token
       state.state = UserState.NONE
     })
     builder.addCase(login.rejected, (state, action) => {
       state.loading = false
       state.error = action.payload!
+      state.token = null
       state.state = UserState.NONE
     })
 
@@ -87,6 +101,7 @@ export const authStateSlice = createSlice({
       state.success = true
       state.user = null
       state.state = UserState.NONE
+      state.token = null
     })
     builder.addCase(logout.rejected, (state, action) => {
       state.loading = false

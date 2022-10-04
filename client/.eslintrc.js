@@ -4,7 +4,14 @@ module.exports = {
     project: './tsconfig.eslint.json',
     tsconfigRootDir: __dirname,
   },
-  extends: ['airbnb', 'airbnb/hooks', 'airbnb-typescript', 'prettier'],
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'airbnb-typescript',
+    'prettier',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+  ],
   env: {
     browser: true,
     node: true,
@@ -111,8 +118,39 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-props-no-spreading': 0,
     'class-methods-use-this': 0,
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: false,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+        allowSeparatedGroups: true,
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin', // Built-in imports (come from NodeJS native) go first
+          'external', // <- External imports
+          'internal', // <- Absolute imports
+          ['sibling', 'parent'], // <- Relative imports, the sibling and parent types they can be mingled together
+          'index', // <- index imports
+          'unknown', // <- unknown imports
+          'type', // <- type imports
+        ],
+        'newlines-between': 'always',
+        alphabetize: {
+          /* sort in ascending order. Options: ["ignore", "asc", "desc"] */
+          order: 'asc',
+          /* ignore case. Options: [true, false] */
+          caseInsensitive: true,
+        },
+      },
+    ],
   },
-  plugins: ['html', 'prettier', 'react-hooks'],
+  plugins: ['html', 'prettier', 'react-hooks', 'import'],
   settings: {
     'import/resolver': {
       node: {

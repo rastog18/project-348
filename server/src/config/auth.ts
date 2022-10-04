@@ -1,7 +1,8 @@
-import passport from 'passport'
 import jwt from 'jsonwebtoken'
-import type { CookieOptions, NextFunction, Request, Response } from 'express'
 import ms from 'ms'
+import passport from 'passport'
+
+import type { CookieOptions, NextFunction, Request, Response } from 'express'
 
 const dev = process.env.NODE_ENV !== 'production'
 

@@ -1,6 +1,7 @@
-import passportLocalMongoose from 'passport-local-mongoose'
-import { model, Schema, SchemaTypes } from 'mongoose'
 import omit from 'lodash/omit'
+import { Schema, SchemaTypes, model } from 'mongoose'
+import passportLocalMongoose from 'passport-local-mongoose'
+
 import type { IUserAuth } from 'types/types'
 
 const UserAuthSchema = new Schema<IUserAuth>({

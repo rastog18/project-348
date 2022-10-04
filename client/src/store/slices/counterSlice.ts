@@ -1,5 +1,6 @@
-import type { CaseReducer, PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
+
+import type { CaseReducer, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from 'store'
 
 // Following this tutorial: https://redux-toolkit.js.org/tutorials/quick-start

@@ -1,5 +1,6 @@
+import { ButtonBase, styled } from '@mui/material'
+
 import type { ButtonProps } from '@mui/material'
-import { styled, ButtonBase } from '@mui/material'
 import type { FC } from 'react'
 
 const CustomButton = styled(ButtonBase)({

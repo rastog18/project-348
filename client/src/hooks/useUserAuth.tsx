@@ -2,9 +2,11 @@ import to from 'await-to-js'
 import { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useMatch, useNavigate } from 'react-router-dom'
+
+import { UserState, authStateSelector } from 'store/slices/authSlice'
+import { logout as _logout, getUser } from 'store/thunks/authThunk'
+
 import type { DispatchType } from 'store'
-import { authStateSelector, UserState } from 'store/slices/authSlice'
-import { getUser, logout as _logout } from 'store/thunks/authThunk'
 
 const useUserAuth = () => {
   const dispatch = useDispatch<DispatchType>()
@@ -15,7 +17,6 @@ const useUserAuth = () => {
 
   const checkAuthStatus = useCallback(async () => {
     const [error, res] = await to(dispatch(getUser()).unwrap())
-
     if (error) throw new Error(error.message)
 
     return res

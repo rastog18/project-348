@@ -1,7 +1,8 @@
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
-import Root from 'views/Root'
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material'
 import { Provider } from 'react-redux'
+
 import ReduxStore from 'store'
+import Root from 'views/Root'
 
 function App() {
   // Set up MUI theme

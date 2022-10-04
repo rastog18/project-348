@@ -1,10 +1,11 @@
+import { Container } from '@mui/material'
 import * as React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Container } from '@mui/material'
+
 import Main from 'views/Main'
+import { Auth, Login, Me, Register } from 'views/Tutorial/Auth'
 import Axios from 'views/Tutorial/Axios'
 import Redux from 'views/Tutorial/Redux'
-import { Auth, Login, Me, Register } from 'views/Tutorial/Auth'
 
 export default function Root() {
   return (

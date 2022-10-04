@@ -1,9 +1,11 @@
-import jwt from 'jsonwebtoken'
 import to from 'await-to-js'
-import type { Request, Response } from 'express'
-import UserAuth from 'models/userAuth.model'
-import type { IUserAuth } from 'types/types'
+import jwt from 'jsonwebtoken'
+
 import { COOKIE_OPTIONS, getRefreshToken, getToken } from 'config/auth'
+import UserAuth from 'models/userAuth.model'
+
+import type { Request, Response } from 'express'
+import type { IUserAuth } from 'types/types'
 
 // https://www.codingdeft.com/posts/react-authentication-mern-node-passport-express-mongo
 // https://www.bezkoder.com/react-refresh-token/

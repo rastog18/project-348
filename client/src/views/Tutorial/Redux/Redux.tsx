@@ -1,9 +1,11 @@
-import { Container, Stack, styled, TextField, Typography } from '@mui/material'
-import Button from 'components/Button'
+import { Container, Stack, TextField, Typography, styled } from '@mui/material'
 import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import type { ChangeEvent } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import Button from 'components/Button'
 import { countSelector, decrement, increment } from 'store/slices/counterSlice'
+
+import type { ChangeEvent } from 'react'
 
 // "Extend" the custom button to override and apply new styles
 const RoundButton = styled(Button)({

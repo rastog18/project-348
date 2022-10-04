@@ -7,12 +7,14 @@ import {
   Typography,
 } from '@mui/material'
 import to from 'await-to-js'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import type { DispatchType } from 'store'
-import { authStateSelector, UserState } from 'store/slices/authSlice'
+
+import { UserState, authStateSelector } from 'store/slices/authSlice'
 import { getUser, login } from 'store/thunks/authThunk'
+
+import type { DispatchType } from 'store'
 
 const Login = () => {
   const navigate = useNavigate()

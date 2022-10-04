@@ -1,3 +1,6 @@
+import { Router } from 'express'
+import passport from 'passport'
+
 import { verifyUser } from 'config/auth'
 import {
   getUser,
@@ -6,8 +9,6 @@ import {
   refreshToken,
   register,
 } from 'controllers/auth.controller'
-import { Router } from 'express'
-import passport from 'passport'
 
 const authRouter = Router()
 

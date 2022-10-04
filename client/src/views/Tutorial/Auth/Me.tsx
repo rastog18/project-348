@@ -1,4 +1,5 @@
-import { Button, Container, Typography, Box } from '@mui/material'
+import { Box, Button, Container, Typography } from '@mui/material'
+
 import useUserAuth from 'hooks/useUserAuth'
 
 const Me = () => {

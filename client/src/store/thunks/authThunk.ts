@@ -1,12 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import type { AuthResponse } from 'api/auth'
-import {
-  register as _register,
-  login as _login,
-  getUser as _getUser,
-  logout as _logout,
-} from 'api/auth'
 import to from 'await-to-js'
+
+import {
+  getUser as _getUser,
+  login as _login,
+  logout as _logout,
+  register as _register,
+} from 'api/auth'
+
+import type { AuthResponse } from 'api/auth'
 import type { AxiosError } from 'axios'
 
 // https://redux-toolkit.js.org/usage/usage-with-typescript#createasyncthunk
@@ -17,15 +19,6 @@ type Error = {
     message: string
   }
 }
-
-const setTokenToLocalStorage = (token: string) =>
-  localStorage.setItem('mern-boilerplate-session-token', token)
-
-const getTokenFromLocalStorage = () =>
-  localStorage.getItem('mern-boilerplate-session-token')
-
-const removeTokenFromLocalStorage = () =>
-  localStorage.removeItem('mern-boilerplate-session-token')
 
 export const getUser = createAsyncThunk<
   { user: IUserAuth },
@@ -60,12 +53,10 @@ export const register = createAsyncThunk<
   const [error, res] = await to(_register({ email, password }))
 
   if (error) {
+    console.log(error)
     const { response } = error as AxiosError
     return rejectWithValue((response?.data as Error).error)
   }
-
-  const { token } = res.data
-  setTokenToLocalStorage(token)
 
   return res.data
 })
@@ -87,9 +78,6 @@ export const login = createAsyncThunk<
     return rejectWithValue((response?.data as Error).error)
   }
 
-  const { token } = res.data
-  setTokenToLocalStorage(token)
-
   return res.data
 })
 
@@ -109,6 +97,4 @@ export const logout = createAsyncThunk<
     const { response } = error as AxiosError
     return rejectWithValue((response?.data as Error).error)
   }
-
-  removeTokenFromLocalStorage()
 })

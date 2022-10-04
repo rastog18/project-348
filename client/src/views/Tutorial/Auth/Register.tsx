@@ -10,8 +10,10 @@ import to from 'await-to-js'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import type { DispatchType } from 'store'
+
 import { register } from 'store/thunks/authThunk'
+
+import type { DispatchType } from 'store'
 
 const Register = () => {
   const navigate = useNavigate()

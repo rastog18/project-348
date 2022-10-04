@@ -4,6 +4,7 @@
  */
 
 import fs from 'fs'
+
 import Router from '../src/views/Root'
 
 const PUBLIC_URL = 'http://localhost:3000'

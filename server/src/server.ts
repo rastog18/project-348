@@ -1,10 +1,11 @@
 import 'dotenv/config'
-import express from 'express'
-import cors from 'cors'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
+import express from 'express'
 import session from 'express-session'
 import passport from 'passport'
+
 import mongoConnect from 'config/db'
 import initializeAuth from 'config/passport'
 import rootRouter from 'routes'
