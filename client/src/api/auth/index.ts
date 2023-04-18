@@ -54,7 +54,7 @@ AuthInstance.interceptors.response.use(
       if (
         err.response.status === 401 &&
         !originalConfig.retry &&
-        originalConfig.url !== '/refreshToken'
+        originalConfig.url !== '/refresh-token'
       ) {
         originalConfig.retry = true
 
@@ -94,7 +94,7 @@ export const login = ({ email, password }: IUserAuth) =>
 
 // avoid infinite loops when refresh token request fails
 export const getRefreshToken = () =>
-  AuthInstance.post<AuthResponse>('/refreshToken')
+  AuthInstance.post<AuthResponse>('/refresh-token')
 
 export const getUser = () => AuthInstance.get<Pick<AuthResponse, 'user'>>('/me')
 

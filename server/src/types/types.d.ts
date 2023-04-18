@@ -10,5 +10,5 @@ interface IUser extends Document {
 interface IUserAuth extends PassportLocalDocument {
   email: string
   password: string
-  refreshTokens: [Session]
+  refreshTokens: Session[]
 }

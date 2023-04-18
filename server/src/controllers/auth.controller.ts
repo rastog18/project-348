@@ -1,11 +1,11 @@
 import to from 'await-to-js'
 import jwt from 'jsonwebtoken'
 
-import { COOKIE_OPTIONS, getRefreshToken, getToken } from 'config/auth'
-import UserAuth from 'models/userAuth.model'
+import { COOKIE_OPTIONS, getRefreshToken, getToken } from '@/config/auth'
+import UserAuth from '@/models/userAuth.model'
 
 import type { Request, Response } from 'express'
-import type { IUserAuth } from 'types/types'
+import type { IUserAuth } from '@/types/types'
 
 // https://www.codingdeft.com/posts/react-authentication-mern-node-passport-express-mongo
 // https://www.bezkoder.com/react-refresh-token/
@@ -15,7 +15,7 @@ export const login = async (
   res: Response
 ) => {
   const { user } = req
-  if (!user) return res.status(401).json({ error: new Error('invalid login') })
+  if (!user) return res.status(401).json({ error: 'invalid login' })
 
   const token = getToken({ _id: user._id })
   const refreshToken = getRefreshToken({ _id: user._id })
@@ -32,8 +32,7 @@ export const login = async (
     ).exec()
   )
   if (error) return res.status(500).json({ error })
-  if (!userObj)
-    return res.status(500).json({ error: new Error('unable to find user') })
+  if (!userObj) return res.status(500).json({ error: 'unable to find user' })
 
   res.cookie('refreshToken', refreshToken, COOKIE_OPTIONS)
   return res.json({ user: userObj, token })

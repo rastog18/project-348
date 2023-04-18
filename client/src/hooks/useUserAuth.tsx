@@ -30,7 +30,7 @@ const useUserAuth = () => {
   }, [dispatch, navigate])
 
   useEffect(() => {
-    if (state === UserState.NONE)
+    if (state === UserState.IDLE)
       checkAuthStatus().catch(() => {
         if (!isLoginPage) {
           navigate('/auth/login')

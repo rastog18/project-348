@@ -9,7 +9,7 @@ interface IUser {
 }
 
 export enum UserState {
-  NONE,
+  IDLE,
   LOGGING_IN,
   LOGGING_OUT,
   REGISTERING,
@@ -33,7 +33,7 @@ const initialState: IAuthState = {
   loading: false,
   error: null,
   success: false,
-  state: UserState.NONE,
+  state: UserState.IDLE,
   token: null,
 }
 
@@ -61,12 +61,12 @@ export const authStateSlice = createSlice({
       state.success = true
       state.user = action.payload.user
       state.token = action.payload.token
-      state.state = UserState.NONE
+      state.state = UserState.IDLE
     })
     builder.addCase(register.rejected, (state, action) => {
       state.loading = false
       state.error = action.payload!
-      state.state = UserState.NONE
+      state.state = UserState.IDLE
       state.token = null
     })
 
@@ -81,13 +81,13 @@ export const authStateSlice = createSlice({
       state.success = true
       state.user = action.payload.user
       state.token = action.payload.token
-      state.state = UserState.NONE
+      state.state = UserState.IDLE
     })
     builder.addCase(login.rejected, (state, action) => {
       state.loading = false
       state.error = action.payload!
       state.token = null
-      state.state = UserState.NONE
+      state.state = UserState.IDLE
     })
 
     // logout
@@ -100,13 +100,13 @@ export const authStateSlice = createSlice({
       state.loading = false
       state.success = true
       state.user = null
-      state.state = UserState.NONE
+      state.state = UserState.IDLE
       state.token = null
     })
     builder.addCase(logout.rejected, (state, action) => {
       state.loading = false
       state.error = action.payload!
-      state.state = UserState.NONE
+      state.state = UserState.IDLE
     })
 
     // get user
@@ -118,12 +118,12 @@ export const authStateSlice = createSlice({
       state.loading = false
       state.success = true
       state.user = action.payload.user
-      state.state = UserState.NONE
+      state.state = UserState.IDLE
     })
     builder.addCase(getUser.rejected, (state, action) => {
       state.loading = false
       state.error = action.payload!
-      state.state = UserState.NONE
+      state.state = UserState.IDLE
     })
   },
 })

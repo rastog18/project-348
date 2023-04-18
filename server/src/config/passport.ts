@@ -2,7 +2,7 @@ import to from 'await-to-js'
 import passport from 'passport'
 import { ExtractJwt, Strategy } from 'passport-jwt'
 
-import UserAuth from 'models/userAuth.model'
+import UserAuth from '@/models/userAuth.model'
 
 // https://github.com/jwalton/passport-api-docs
 

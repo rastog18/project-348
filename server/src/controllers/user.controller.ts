@@ -1,9 +1,9 @@
 import to from 'await-to-js'
 
-import User from 'models/user.model'
+import User from '@/models/user.model'
 
 import type { Request, Response } from 'express'
-import type { IUser } from 'types/types'
+import type { IUser } from '@/types/types'
 
 /**
  * .lean() returns an object rather than the mongoose document
@@ -35,8 +35,7 @@ export const createUser = async (
   res: Response
 ) => {
   const { firstName, lastName } = req.body
-  if (!firstName)
-    return res.status(400).send({ error: new Error('firstName required') })
+  if (!firstName) return res.status(400).send({ error: 'firstName required' })
 
   const [error, user] = await to(User.create({ firstName, lastName }))
   if (error) return res.status(500).send({ error })

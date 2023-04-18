@@ -1,15 +1,16 @@
 module.exports = {
+  parser: '@typescript-eslint/parser',
   parserOptions: {
+    ecmaVersion: 2020,
     sourceType: 'module',
     project: './tsconfig.eslint.json',
     tsconfigRootDir: __dirname,
   },
   extends: [
-    'airbnb-base',
+    'plugin:@typescript-eslint/recommended',
+    'airbnb',
     'airbnb-typescript/base',
     'plugin:prettier/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
   ],
   plugins: ['prettier', 'import'],
   rules: {
@@ -17,7 +18,15 @@ module.exports = {
     'no-console': 1,
     'no-underscore-dangle': 0,
     'no-unused-vars': 1,
-    'func-names': 0,
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'variable',
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+      },
+    ],
+    '@typescript-eslint/no-empty-interface': 0,
+    '@typescript-eslint/ban-types': 0,
     'prettier/prettier': [
       'error',
       {
@@ -25,37 +34,6 @@ module.exports = {
         singleQuote: true,
         semi: false,
         endOfLine: 'auto',
-      },
-    ],
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-        allowSeparatedGroups: true,
-      },
-    ],
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin', // Built-in imports (come from NodeJS native) go first
-          'external', // <- External imports
-          'internal', // <- Absolute imports
-          ['sibling', 'parent'], // <- Relative imports, the sibling and parent types they can be mingled together
-          'index', // <- index imports
-          'unknown', // <- unknown imports
-          'type', // <- type imports
-        ],
-        'newlines-between': 'always',
-        alphabetize: {
-          /* sort in ascending order. Options: ["ignore", "asc", "desc"] */
-          order: 'asc',
-          /* ignore case. Options: [true, false] */
-          caseInsensitive: true,
-        },
       },
     ],
   },

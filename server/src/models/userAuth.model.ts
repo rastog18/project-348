@@ -1,8 +1,8 @@
 import omit from 'lodash/omit'
-import { Schema, SchemaTypes, model } from 'mongoose'
+import { PassportLocalModel, Schema, SchemaTypes, model } from 'mongoose'
 import passportLocalMongoose from 'passport-local-mongoose'
 
-import type { IUserAuth } from 'types/types'
+import type { IUser, IUserAuth } from '@/types/types'
 
 const UserAuthSchema = new Schema<IUserAuth>({
   email: {
@@ -27,6 +27,9 @@ UserAuthSchema.set('toJSON', {
   transform: (doc, ret: IUserAuth) =>
     omit(ret, ['refreshTokens', 'salt', 'hash']),
 })
-const UserAuth = model('userAuth', UserAuthSchema)
+const UserAuth = model(
+  'userAuth',
+  UserAuthSchema
+) as PassportLocalModel<IUserAuth>
 
 export default UserAuth

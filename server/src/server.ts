@@ -6,9 +6,9 @@ import express from 'express'
 import session from 'express-session'
 import passport from 'passport'
 
-import mongoConnect from 'config/db'
-import initializeAuth from 'config/passport'
-import rootRouter from 'routes'
+import mongoConnect from '@/config/db'
+import initializeAuth from '@/config/passport'
+import rootRouter from '@/routes'
 
 const app = express()
 const port = process.env.PORT || 8080

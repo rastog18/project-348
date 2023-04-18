@@ -27,7 +27,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
-    if (state !== UserState.NONE) return
+    if (state !== UserState.IDLE) return
     ;(async () => {
       const [, res] = await to(dispatch(getUser()).unwrap())
       if (res) navigate('/auth/me')

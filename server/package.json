@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_PATH=./src ts-node-dev --respawn src/server.ts",
-    "build": "tsc",
+    "start:prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./build/server.js",
+    "build": "tsc -p .",
     "lint": "eslint ."
   },
   "author": "",
@@ -52,7 +53,10 @@
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^1.1.8",
-    "typescript": "^4.6.4"
+    "tsconfig-paths": "^4.2.0",
+    "tscpaths": "^0.0.9",
+    "typescript": "^4.9.3"
   }
 }
