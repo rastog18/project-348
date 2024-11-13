@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const UserClient = axios.create({
-  baseURL: `${process.env.REACT_APP_SERVER_URL}/api/user`,
+  baseURL: `${import.meta.env.VITE_SERVER_URL}/api/user`,
   timeout: 1000,
 })
 

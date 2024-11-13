@@ -1,6 +1,6 @@
 import { Box, Container, Stack, TextField, Typography } from '@mui/material'
-import { deleteUser, getUser, getUsers, updateUser, createUser } from 'api/user'
-import Button from 'components/Button'
+import { deleteUser, getUser, getUsers, updateUser, createUser } from '../api/user'
+import Button from '../components/Button'
 import { useEffect, useState } from 'react'
 import to from 'await-to-js'
 

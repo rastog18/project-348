@@ -1,5 +1,9 @@
 import { styled, ButtonBase } from '@mui/material'
 
+
+/**
+ * Example button component using material UI
+ */
 const CustomButton = styled(ButtonBase)({
   padding: '12px 16px',
   borderRadius: '20px',

@@ -2,17 +2,16 @@
 
 ## Introduction
 
-This is a full-stack boilerplate using MongoDB, Express.js, React.js, Node.js, and Typescript. For the Javascript boilerplate, switch to the `js` branch.
+This is a full-stack boilerplate using MongoDB, Express.js, React.js, Node.js, and JavaScript
 
-The `main` branch contains the starter code for a basic React project (initialized with `create-react-app`) using [MUI](https://mui.com) and an Express server connected to MongoDB.
+The `main` branch contains the starter code for a basic React project (initialized with `vite`) using [MUI](https://mui.com) and [TailwindCSS](https://tailwindcss.com/) for styling, and an Express server connected to MongoDB.
 
-The `completed` branch contains the code to a fully-functioning, dockerized, web app with user authentication.
 
 <!-- Description about the app -->
 
 ## Requirements
 
-- Node.js (Recommended to install through [NVM](https://github.com/nvm-sh/nvm))
+- Node.js ([Installation](https://nodejs.org/en))
 - MongoDB ([Community edition](https://www.mongodb.com/docs/manual/installation/))
 
 ### Recommended VsCode extensions
@@ -58,8 +57,8 @@ REACT_APP_SERVER_URL=http://localhost:8080
 ```
 NODE_ENV=development
 PORT=8080
-MONGO_URI=mongodb://localhost:27017/mern-db
-CLIENT_URL=http://localhost:3000
+MONGO_URI=mongodb:<link to mongo databse>
+CLIENT_URL=http://localhost:5173
 ```
 
 ### Running client and server
@@ -68,7 +67,7 @@ In two separate terminals:
 
 ```
 cd client
-npm start
+npm run dev
 ```
 
 ```
@@ -81,10 +80,9 @@ npm start
 ### Frontend
 
 - [React.js](https://reactjs.org/)
-  - [Create-react-app](https://create-react-app.dev/)
+  - [Vite](https://vite.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
 - [MUI](https://mui.com)
-- [React-Redux](https://react-redux.js.org/)
-  - [Redux-toolkit](https://redux-toolkit.js.org/)
 - [Axios](https://axios-http.com/)
 
 ### Backend
