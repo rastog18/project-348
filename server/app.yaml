@@ -1,0 +1,9 @@
+runtime: nodejs20
+env: standard
+service: default
+
+env_variables:
+  NODE_ENV: "development"
+  PORT: "8080"
+  MONGO_URL: "mongodb+srv://user-rastog18:test-1234@cluster0.m1frs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  CLIENT_URL: 'https://purdue-348.web.app'

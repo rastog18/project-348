@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec ./node_modules/.bin/babel-node ./src/server.js",
-    "build": "babel -d ./build ./src -s",
-    "lint": "eslint ."
+    "build": "babel src -d build --extensions \".js,.jsx,.ts,.tsx\"",
+    "postinstall": "npm run build",
+    "start":   "node --experimental-specifier-resolution=node build/server.js",
+    "dev":     "nodemon --exec npm start"
   },
   "author": "",
   "license": "ISC",
@@ -23,11 +24,12 @@
     "mongoose": "^6.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
+    "@babel/cli": "^7.27.0",
+    "@babel/core": "^7.26.10",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/eslint-plugin": "^7.17.7",
     "@babel/node": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-env": "^7.26.9",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
